@@ -7,8 +7,10 @@
         <Title>SteamStorageAPI.SDK</Title>
         <Authors>AMUDENN</Authors>
         <Description>A class library for interacting with the SteamStorage API</Description>
-        <PackageIcon>Resources\icon.png</PackageIcon>
+        <PackageIcon>icon.png</PackageIcon>
         <PackageId>SteamStorageAPI.SDK</PackageId>
+        <RepositoryUrl>https://github.com/AMUDENN/SteamStorageAPI.SDK</RepositoryUrl>
+        <RepositoryType>git</RepositoryType>
     </PropertyGroup>
 
     <ItemGroup>
@@ -17,8 +19,14 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Resources\" />
       <Folder Include="Services\Ping\" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Include="Resources\icon.png">
+        <Pack>True</Pack>
+        <PackagePath>\</PackagePath>
+      </None>
     </ItemGroup>
 
 </Project>
