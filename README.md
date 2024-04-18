@@ -10,9 +10,4 @@ Installation using Package Manager.
 Install-Package SteamStorageAPI.SDK
 ```
 
-## License
-
-MIT
-
-
 [steamstorageapi]: <https://github.com/AMUDENN/SteamStorageAPI>
