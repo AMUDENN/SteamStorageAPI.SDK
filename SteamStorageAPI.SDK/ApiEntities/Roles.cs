@@ -3,20 +3,21 @@
 
 namespace SteamStorageAPI.SDK.ApiEntities;
 
-public static class Pages
+public static class Roles
 {
     #region Records
 
-    public record PageResponse(
+    public record RoleResponse(
         int Id,
         string Title) : Response;
-    
-    public record PagesResponse(
-        int Count,
-        IEnumerable<PageResponse>? Pages) : Response;
 
-    public record SetPageRequest(
-        int PageId) : Request;
+    public record RolesResponse(
+        int Count,
+        IEnumerable<RoleResponse>? Roles) : Response;
+
+    public record SetRoleRequest(
+        int UserId,
+        int RoleId) : Request;
 
     #endregion Records
 }

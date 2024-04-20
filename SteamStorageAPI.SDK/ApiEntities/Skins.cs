@@ -1,4 +1,5 @@
 ﻿using SteamStorageAPI.SDK.ApiEntities.Tools;
+// ReSharper disable NotAccessedPositionalProperty.Global
 
 namespace SteamStorageAPI.SDK.ApiEntities;
 
@@ -24,7 +25,7 @@ public static class Skins
         string Title,
         string MarketHashName,
         string MarketUrl) : Response;
-    
+
     public record BaseSkinsResponse(
         int Count,
         IEnumerable<BaseSkinResponse>? Skins) : Response;
@@ -53,12 +54,15 @@ public static class Skins
     public record SkinPagesCountResponse(
         int Count) : Response;
 
+    public record SteamSkinsCountResponse(
+        int Count) : Response;
+
     public record SavedSkinsCountResponse(
         int Count) : Response;
 
     public record GetSkinRequest(
         int SkinId) : Request;
-    
+
     public record GetBaseSkinsRequest(
         string? Filter) : Request;
 
@@ -82,10 +86,17 @@ public static class Skins
         bool? IsMarked,
         int PageSize) : Request;
 
+    public record GetSteamSkinsCountRequest(
+        int GameId) : Request;
+
     public record GetSavedSkinsCountRequest(
         int? GameId,
         string? Filter,
         bool? IsMarked) : Request;
+
+    public record PostSkinRequest(
+        int GameId,
+        string MarketHashName) : Request;
 
     public record SetMarkedSkinRequest(
         int SkinId) : Request;

@@ -1,4 +1,5 @@
 ﻿using SteamStorageAPI.SDK.ApiEntities.Tools;
+// ReSharper disable NotAccessedPositionalProperty.Global
 
 namespace SteamStorageAPI.SDK.ApiEntities;
 
@@ -21,14 +22,18 @@ public static class Users
         DateTime DateRegistration,
         decimal? GoalSum) : Response;
     
+    public record UsersResponse(
+        int Count,
+        IEnumerable<UserResponse>? Users) : Response;
+    
     public record GoalSumResponse(
         decimal? GoalSum) : Response;
+    
+    public record GetUserRequest(
+        int UserId) : Request;
 
     public record PutGoalSumRequest(
         decimal? GoalSum) : Request;
-
-    public record PutStartPageRequest(
-        int StartPageId) : Request;
 
     #endregion Records
 }
