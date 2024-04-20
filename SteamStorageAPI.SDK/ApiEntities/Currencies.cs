@@ -1,5 +1,6 @@
 ﻿using SteamStorageAPI.SDK.ApiEntities.Tools;
 // ReSharper disable NotAccessedPositionalProperty.Global
+// ReSharper disable UnusedType.Global
 
 namespace SteamStorageAPI.SDK.ApiEntities;
 
@@ -12,6 +13,7 @@ public static class Currencies
         int SteamCurrencyId,
         string Title,
         string Mark,
+        string CultureInfo,
         double Price,
         DateTime DateUpdate) : Response;
 

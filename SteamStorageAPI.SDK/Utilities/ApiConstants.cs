@@ -1,4 +1,6 @@
-﻿namespace SteamStorageAPI.SDK.Utilities;
+﻿// ReSharper disable UnusedMember.Global
+
+namespace SteamStorageAPI.SDK.Utilities;
 
 public static class ApiConstants
 {
@@ -31,6 +33,7 @@ public static class ApiConstants
         Games,
         Inventory,
         Pages,
+        Roles,
         Skins,
         Statistics,
         Users
@@ -107,6 +110,10 @@ public static class ApiConstants
         GetCurrency,
         ///<summary>GET request</summary>
         GetCurrentCurrency,
+        ///<summary>POST request</summary>
+        PostCurrency,
+        ///<summary>PUT request</summary>
+        PutCurrencyInfo,
         ///<summary>PUT request</summary>
         SetCurrency,
         
@@ -115,6 +122,12 @@ public static class ApiConstants
 
         ///<summary>GET request</summary>
         GetGames = 800,
+        ///<summary>POST request</summary>
+        PostGame,
+        ///<summary>PUT request</summary>
+        PutGameInfo,
+        ///<summary>DELETE request</summary>
+        DeleteGame,
 
         ///<summary>GET request</summary>
         GetInventory = 900,
@@ -133,9 +146,14 @@ public static class ApiConstants
         GetCurrentStartPage,
         ///<summary>PUT request</summary>
         SetStartPage,
+        
+        ///<summary>GET request</summary>
+        GetRoles = 1100,
+        ///<summary>PUT request</summary>
+        SetRole,
 
         ///<summary>GET request</summary>
-        GetSkinInfo = 1100,
+        GetSkinInfo = 1200,
         ///<summary>GET request</summary>
         GetBaseSkins,
         ///<summary>GET request</summary>
@@ -148,13 +166,15 @@ public static class ApiConstants
         GetSteamSkinsCount,
         ///<summary>GET request</summary>
         GetSavedSkinsCount,
+        ///<summary>POST request</summary>
+        PostSkin,
         ///<summary>PUT request</summary>
         SetMarkedSkin,
         ///<summary>DELETE request</summary>
         DeleteMarkedSkin,
 
         ///<summary>GET request</summary>
-        GetInvestmentSum = 1200,
+        GetInvestmentSum = 1300,
         ///<summary>GET request</summary>
         GetFinancialGoal,
         ///<summary>GET request</summary>
@@ -167,7 +187,11 @@ public static class ApiConstants
         GetItemsCount,
 
         ///<summary>GET request</summary>
-        GetCurrentUserInfo = 1300,
+        GetUsers = 1400,
+        ///<summary>GET request</summary>
+        GetUserInfo,
+        ///<summary>GET request</summary>
+        GetCurrentUserInfo,
         ///<summary>GET request</summary>
         GetCurrentUserGoalSum,
         ///<summary>PUT request</summary>

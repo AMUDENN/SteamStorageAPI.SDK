@@ -6,6 +6,7 @@ using SteamStorageAPI.SDK.ApiEntities.Tools;
 using SteamStorageAPI.SDK.Services.Logger.LoggerService;
 using SteamStorageAPI.SDK.Utilities;
 using SteamStorageAPI.SDK.Utilities.Events;
+// ReSharper disable UnusedMember.Global
 
 namespace SteamStorageAPI.SDK;
 

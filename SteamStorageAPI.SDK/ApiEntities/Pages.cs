@@ -1,5 +1,6 @@
 ﻿using SteamStorageAPI.SDK.ApiEntities.Tools;
 // ReSharper disable NotAccessedPositionalProperty.Global
+// ReSharper disable UnusedType.Global
 
 namespace SteamStorageAPI.SDK.ApiEntities;
 
