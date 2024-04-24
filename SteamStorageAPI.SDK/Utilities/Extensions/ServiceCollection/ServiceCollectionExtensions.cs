@@ -2,6 +2,7 @@
 using SteamStorageAPI.SDK.Services.AuthorizationService;
 using SteamStorageAPI.SDK.Services.Logger.LoggerService;
 using SteamStorageAPI.SDK.Services.Ping.PingService;
+using SteamStorageAPI.SDK.Services.ReferenceInformationService;
 using SteamStorageAPI.SDK.Utilities.DelegatingHandlers;
 using SteamStorageAPI.SDK.Utilities.Extensions.ServiceCollection.Options;
 
@@ -70,6 +71,15 @@ public static class ServiceCollectionExtensions
         //PingService
         services.AddScoped<IPingService, PingService>(_ =>
             new(ApiConstants.HOST_NAME));
+
+        return services;
+    }
+    
+    public static IServiceCollection AddSteamStorageReferenceInformationService(
+        this IServiceCollection services)
+    {
+        //ReferenceInformationService
+        services.AddScoped<IReferenceInformationService, ReferenceInformationService>();
 
         return services;
     }
