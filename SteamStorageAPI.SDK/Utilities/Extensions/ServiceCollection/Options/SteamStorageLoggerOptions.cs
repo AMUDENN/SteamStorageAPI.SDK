@@ -1,4 +1,6 @@
-﻿namespace SteamStorageAPI.SDK.Utilities.Extensions.ServiceCollection.Options;
+﻿// ReSharper disable AutoPropertyCanBeMadeGetOnly.Global
+
+namespace SteamStorageAPI.SDK.Utilities.Extensions.ServiceCollection.Options;
 
 public class SteamStorageLoggerOptions
 {

@@ -189,6 +189,8 @@ public static class ApiConstants
         ///<summary>GET request</summary>
         GetUsers = 1400,
         ///<summary>GET request</summary>
+        GetUsersCount,
+        ///<summary>GET request</summary>
         GetUserInfo,
         ///<summary>GET request</summary>
         GetCurrentUserInfo,

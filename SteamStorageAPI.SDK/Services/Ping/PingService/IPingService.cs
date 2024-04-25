@@ -1,4 +1,6 @@
-﻿namespace SteamStorageAPI.SDK.Services.Ping.PingService;
+﻿// ReSharper disable UnusedMember.Global
+
+namespace SteamStorageAPI.SDK.Services.Ping.PingService;
 
 public interface IPingService
 {

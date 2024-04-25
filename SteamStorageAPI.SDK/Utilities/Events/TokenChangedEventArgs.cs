@@ -1,4 +1,6 @@
-﻿namespace SteamStorageAPI.SDK.Utilities.Events;
+﻿// ReSharper disable UnusedAutoPropertyAccessor.Global
+
+namespace SteamStorageAPI.SDK.Utilities.Events;
 
 public class TokenChangedEventArgs : EventArgs
 {

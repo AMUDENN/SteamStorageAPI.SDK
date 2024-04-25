@@ -5,6 +5,8 @@ using SteamStorageAPI.SDK.Services.Ping.PingService;
 using SteamStorageAPI.SDK.Services.ReferenceInformationService;
 using SteamStorageAPI.SDK.Utilities.DelegatingHandlers;
 using SteamStorageAPI.SDK.Utilities.Extensions.ServiceCollection.Options;
+// ReSharper disable UnusedType.Global
+// ReSharper disable UnusedMember.Global
 
 namespace SteamStorageAPI.SDK.Utilities.Extensions.ServiceCollection;
 

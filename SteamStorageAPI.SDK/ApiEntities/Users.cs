@@ -10,12 +10,13 @@ public static class Users
 
     public record UserResponse(
         int UserId,
-        long SteamId,
+        string SteamId,
         string ProfileUrl,
         string? ImageUrl,
         string? ImageUrlMedium,
         string? ImageUrlFull,
         string? Nickname,
+        int RoleId,
         string Role,
         int StartPageId,
         string StartPage,
@@ -25,10 +26,18 @@ public static class Users
     
     public record UsersResponse(
         int Count,
-        IEnumerable<UserResponse>? Users) : Response;
+        int PagesCount,
+        IEnumerable<UserResponse> Users) : Response;
+
+    public record UsersCountResponse(
+        int Count) : Response;
     
     public record GoalSumResponse(
         decimal? GoalSum) : Response;
+
+    public record GetUsersRequest(
+        int PageNumber,
+        int PageSize) : Request;
     
     public record GetUserRequest(
         int UserId) : Request;

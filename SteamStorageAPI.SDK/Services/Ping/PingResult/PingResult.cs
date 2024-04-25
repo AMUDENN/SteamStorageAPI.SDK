@@ -1,4 +1,6 @@
-﻿namespace SteamStorageAPI.SDK.Services.Ping.PingResult;
+﻿// ReSharper disable UnusedAutoPropertyAccessor.Global
+
+namespace SteamStorageAPI.SDK.Services.Ping.PingResult;
 
 public class PingResult
 {

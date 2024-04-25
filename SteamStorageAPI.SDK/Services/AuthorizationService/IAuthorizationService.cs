@@ -1,4 +1,6 @@
-﻿namespace SteamStorageAPI.SDK.Services.AuthorizationService;
+﻿// ReSharper disable UnusedMember.Global
+
+namespace SteamStorageAPI.SDK.Services.AuthorizationService;
 
 public interface IAuthorizationService
 {
