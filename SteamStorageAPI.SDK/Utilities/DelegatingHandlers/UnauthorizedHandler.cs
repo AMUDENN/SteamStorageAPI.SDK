@@ -7,7 +7,7 @@ public class UnauthorizedHandler : DelegatingHandler
 {
     #region Fields
 
-    private readonly ILoggerService? _logger;
+    private readonly ILoggerService _logger;
 
     private readonly ApiClient _apiClient;
 
@@ -16,7 +16,7 @@ public class UnauthorizedHandler : DelegatingHandler
     #region Constructor
 
     public UnauthorizedHandler(
-        ILoggerService? logger,
+        ILoggerService logger,
         ApiClient apiClient)
     {
         _logger = logger;
@@ -35,8 +35,7 @@ public class UnauthorizedHandler : DelegatingHandler
         if (response.StatusCode != HttpStatusCode.Unauthorized) return response;
 
         _apiClient.Token = string.Empty;
-        if (_logger is not null)
-            await _logger.LogAsync("Unauthorized request");
+        await _logger.LogAsync("Unauthorized request");
 
         return response;
     }

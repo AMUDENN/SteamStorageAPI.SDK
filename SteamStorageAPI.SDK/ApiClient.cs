@@ -22,7 +22,7 @@ public class ApiClient
 
     #region Fields
 
-    private readonly ILoggerService? _logger;
+    private readonly ILoggerService _logger;
     private readonly IHttpClientFactory _httpClientFactory;
 
     private string _token;
@@ -32,7 +32,7 @@ public class ApiClient
     #region Constructor
 
     public ApiClient(
-        ILoggerService? logger,
+        ILoggerService logger,
         IHttpClientFactory httpClientFactory)
     {
         _logger = logger;
@@ -76,8 +76,7 @@ public class ApiClient
         }
         catch (Exception ex)
         {
-            if (_logger is not null)
-                await _logger.LogAsync($"ApiException GET \n{uri.ToString()}", ex);
+            await _logger.LogAsync($"ApiException GET \n{uri.ToString()}", ex);
             return default;
         }
     }
@@ -123,8 +122,7 @@ public class ApiClient
         }
         catch (Exception ex)
         {
-            if (_logger is not null)
-                await _logger.LogAsync($"ApiException GET File \n{uri.ToString()}", ex);
+            await _logger.LogAsync($"ApiException GET File \n{uri.ToString()}", ex);
             return default;
         }
     }
@@ -150,8 +148,7 @@ public class ApiClient
         }
         catch (Exception ex)
         {
-            if (_logger is not null)
-                await _logger.LogAsync($"ApiException GET File \n{uri.ToString()}", ex);
+            await _logger.LogAsync($"ApiException GET File \n{uri.ToString()}", ex);
             return default;
         }
     }
@@ -177,8 +174,7 @@ public class ApiClient
         }
         catch (Exception ex)
         {
-            if (_logger is not null)
-                await _logger.LogAsync($"ApiException POST \n{uri.ToString()}", ex);
+            await _logger.LogAsync($"ApiException POST \n{uri.ToString()}", ex);
         }
     }
 
@@ -225,8 +221,7 @@ public class ApiClient
         }
         catch (Exception ex)
         {
-            if (_logger is not null)
-                await _logger.LogAsync($"ApiException PUT \n{uri.ToString()}", ex);
+            await _logger.LogAsync($"ApiException PUT \n{uri.ToString()}", ex);
         }
     }
     
@@ -279,8 +274,7 @@ public class ApiClient
         }
         catch (Exception ex)
         {
-            if (_logger is not null)
-                await _logger.LogAsync($"ApiException DELETE \n{uri.ToString()}", ex);
+            await _logger.LogAsync($"ApiException DELETE \n{uri.ToString()}", ex);
         }
     }
 
