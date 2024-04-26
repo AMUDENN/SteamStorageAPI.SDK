@@ -32,11 +32,41 @@ public static class ServiceCollectionExtensions
             .AddHttpMessageHandler<TokenHandler>()
             .AddHttpMessageHandler<UnauthorizedHandler>();
         //TokenHandler
-        services.AddScoped<TokenHandler>();
+        services.AddTransient<TokenHandler>();
         //UnauthorizedHandler
-        services.AddScoped<UnauthorizedHandler>();
+        services.AddTransient<UnauthorizedHandler>();
         //ApiClient
         services.AddSingleton<ApiClient>();
+
+        return services;
+    }
+    
+    public static IServiceCollection AddSteamStorageApiWeb(
+        this IServiceCollection services,
+        Action<SteamStorageApiOptions>? configureOptions)
+    {
+        SteamStorageApiOptions options = new();
+        configureOptions?.Invoke(options);
+
+        //HttpContextAccessor
+        services.AddHttpContextAccessor();
+        
+        //Main HttpClient
+        services.AddHttpClient(ApiConstants.CLIENT_NAME,
+                client =>
+                {
+                    client.Timeout = TimeSpan.FromSeconds(options.ClientTimeout);
+                    client.DefaultRequestHeaders.Clear();
+                    client.DefaultRequestHeaders.Add("Accept", "application/json");
+                })
+            .AddHttpMessageHandler<WebTokenHandler>()
+            .AddHttpMessageHandler<WebUnauthorizedHandler>();
+        //TokenHandler
+        services.AddTransient<WebTokenHandler>();
+        //UnauthorizedHandler
+        services.AddTransient<WebUnauthorizedHandler>();
+        //ApiClient
+        services.AddScoped<ApiClient>();
 
         return services;
     }

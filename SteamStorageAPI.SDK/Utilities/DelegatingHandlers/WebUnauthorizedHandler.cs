@@ -1,26 +1,28 @@
 ﻿using System.Net;
+using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.DependencyInjection;
 using SteamStorageAPI.SDK.Services.Logger.LoggerService;
 
 namespace SteamStorageAPI.SDK.Utilities.DelegatingHandlers;
 
-public class UnauthorizedHandler : DelegatingHandler
+public class WebUnauthorizedHandler : DelegatingHandler
 {
     #region Fields
 
-    private readonly ILoggerService _logger;
+    private readonly IHttpContextAccessor _httpContextAccessor;
 
-    private readonly ApiClient _apiClient;
+    private readonly ILoggerService _logger;
 
     #endregion Fields
 
     #region Constructor
 
-    public UnauthorizedHandler(
-        ILoggerService logger,
-        ApiClient apiClient)
+    public WebUnauthorizedHandler(
+        IHttpContextAccessor httpContextAccessor,
+        ILoggerService logger)
     {
+        _httpContextAccessor = httpContextAccessor;
         _logger = logger;
-        _apiClient = apiClient;
     }
 
     #endregion Constructor
@@ -35,7 +37,13 @@ public class UnauthorizedHandler : DelegatingHandler
 
         if (response.StatusCode != HttpStatusCode.Unauthorized) return response;
 
-        _apiClient.Token = string.Empty;
+        IServiceProvider? services = _httpContextAccessor.HttpContext?.RequestServices;
+
+        ApiClient? apiClient = services?.GetRequiredService<ApiClient>();
+
+        if (apiClient is not null)
+            apiClient.Token = string.Empty;
+        
         await _logger.LogAsync("Unauthorized request");
 
         return response;

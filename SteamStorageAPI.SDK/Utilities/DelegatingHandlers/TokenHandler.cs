@@ -20,7 +20,8 @@ public class TokenHandler : DelegatingHandler
 
     #region Methods
 
-    protected override async Task<HttpResponseMessage> SendAsync(HttpRequestMessage request,
+    protected override async Task<HttpResponseMessage> SendAsync(
+        HttpRequestMessage request,
         CancellationToken cancellationToken)
     {
         if (!string.IsNullOrEmpty(_apiClient.Token))
