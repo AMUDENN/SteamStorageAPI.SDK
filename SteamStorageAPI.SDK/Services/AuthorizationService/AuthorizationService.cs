@@ -26,6 +26,11 @@ public class AuthorizationService : IAuthorizationService
 
     public async void LogIn()
     {
+        await LogInAsync();
+    }
+
+    public async Task LogInAsync()
+    {
         Authorize.AuthUrlResponse? authUrlResponse =
             await _apiClient.GetAsync<Authorize.AuthUrlResponse>(
                 ApiConstants.ApiMethods.GetAuthUrl);
@@ -50,9 +55,14 @@ public class AuthorizationService : IAuthorizationService
         await hubConnection.InvokeAsync(ApiConstants.JOIN_GROUP_METHOD_NAME, authUrlResponse.Group);
     }
 
-    public void LogOut()
+    public async void LogOut()
     {
-        _apiClient.Token = string.Empty;
+        await LogOutAsync();
+    }
+
+    public async Task LogOutAsync()
+    {
+        await Task.Run(() => _apiClient.Token = string.Empty);
     }
 
     #endregion Methods
