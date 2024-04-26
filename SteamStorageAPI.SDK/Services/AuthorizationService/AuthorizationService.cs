@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.SignalR.Client;
+﻿using System.Net;
+using Microsoft.AspNetCore.SignalR.Client;
 using SteamStorageAPI.SDK.ApiEntities;
 using SteamStorageAPI.SDK.Utilities;
 
@@ -26,14 +27,10 @@ public class AuthorizationService : IAuthorizationService
 
     public async void LogIn()
     {
-        await LogInAsync();
-    }
-
-    public async Task LogInAsync()
-    {
         Authorize.AuthUrlResponse? authUrlResponse =
-            await _apiClient.GetAsync<Authorize.AuthUrlResponse>(
-                ApiConstants.ApiMethods.GetAuthUrl);
+            await _apiClient.GetAsync<Authorize.AuthUrlResponse, Authorize.GetAuthUrlRequest>(
+                ApiConstants.ApiMethods.GetAuthUrl,
+                new(null));
 
         if (authUrlResponse is null) return;
 
@@ -55,12 +52,19 @@ public class AuthorizationService : IAuthorizationService
         await hubConnection.InvokeAsync(ApiConstants.JOIN_GROUP_METHOD_NAME, authUrlResponse.Group);
     }
 
-    public async void LogOut()
+    public async void LogIn(string returnTo)
     {
-        await LogOutAsync();
+        Authorize.AuthUrlResponse? authUrlResponse =
+            await _apiClient.GetAsync<Authorize.AuthUrlResponse, Authorize.GetAuthUrlRequest>(
+                ApiConstants.ApiMethods.GetAuthUrl,
+                new(returnTo));
+
+        if (authUrlResponse is null) return;
+
+        UrlUtility.OpenUrl(authUrlResponse.Url);
     }
 
-    public async Task LogOutAsync()
+    public async void LogOut()
     {
         await Task.Run(() => _apiClient.Token = string.Empty);
     }

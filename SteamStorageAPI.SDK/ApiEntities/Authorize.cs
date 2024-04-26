@@ -8,6 +8,9 @@ public static class Authorize
 {
     #region Records
 
+    public record GetAuthUrlRequest(
+        string? ReturnTo) : Request;
+    
     public record AuthUrlResponse(
         string Url,
         string Group) : Response;

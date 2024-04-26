@@ -6,9 +6,7 @@ public interface IAuthorizationService
 {
     public void LogIn();
 
-    public Task LogInAsync();
+    public void LogIn(string returnTo);
 
     public void LogOut();
-
-    public Task LogOutAsync();
 }
