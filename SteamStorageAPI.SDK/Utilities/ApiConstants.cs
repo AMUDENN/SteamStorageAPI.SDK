@@ -196,6 +196,8 @@ public static class ApiConstants
         GetCurrentUserInfo,
         ///<summary>GET request</summary>
         GetCurrentUserGoalSum,
+        ///<summary>GET request</summary>
+        GetHasAccessToAdminPanel,
         ///<summary>PUT request</summary>
         PutGoalSum,
         ///<summary>DELETE request</summary>

@@ -34,6 +34,9 @@ public static class Users
     
     public record GoalSumResponse(
         decimal? GoalSum) : Response;
+    
+    public record HasAccessToAdminPanelResponse(
+        bool HasAccess) : Response;
 
     public record GetUsersRequest(
         int PageNumber,
