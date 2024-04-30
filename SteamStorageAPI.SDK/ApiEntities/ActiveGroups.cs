@@ -68,7 +68,7 @@ public static class ActiveGroups
 
     public record ActiveGroupDynamicStatsResponse(
         double ChangePeriod,
-        IEnumerable<ActiveGroupDynamicResponse> Dynamic) : Response;
+        IEnumerable<ActiveGroupDynamicResponse>? Dynamic) : Response;
 
     public record ActiveGroupsCountResponse(
         int Count) : Response;

@@ -27,7 +27,7 @@ public static class Users
     public record UsersResponse(
         int Count,
         int PagesCount,
-        IEnumerable<UserResponse> Users) : Response;
+        IEnumerable<UserResponse>? Users) : Response;
 
     public record UsersCountResponse(
         int Count) : Response;
