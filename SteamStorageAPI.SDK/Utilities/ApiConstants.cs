@@ -116,6 +116,8 @@ public static class ApiConstants
         PutCurrencyInfo,
         ///<summary>PUT request</summary>
         SetCurrency,
+        ///<summary>DELETE request</summary>
+        DeleteCurrency,
         
         ///<summary>GET request</summary>
         GetExcelFile = 700,
