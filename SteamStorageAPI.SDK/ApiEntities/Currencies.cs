@@ -27,12 +27,14 @@ public static class Currencies
     public record PostCurrencyRequest(
         int SteamCurrencyId,
         string Title,
-        string Mark) : Request;
+        string Mark,
+        string CultureInfo) : Request;
 
     public record PutCurrencyRequest(
         int CurrencyId,
         string Title,
-        string Mark) : Request;
+        string Mark,
+        string CultureInfo) : Request;
 
     public record SetCurrencyRequest(
         int CurrencyId) : Request;
