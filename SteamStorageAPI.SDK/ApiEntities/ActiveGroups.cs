@@ -73,6 +73,9 @@ public static class ActiveGroups
     public record ActiveGroupsCountResponse(
         int Count) : Response;
 
+    public record GetActiveGroupInfoRequest(
+        int GroupId) : Request;
+    
     public record GetActiveGroupsRequest(
         ActiveGroupOrderName? OrderName,
         bool? IsAscending) : Request;

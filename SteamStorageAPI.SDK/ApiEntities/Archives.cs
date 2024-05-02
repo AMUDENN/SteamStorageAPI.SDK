@@ -51,6 +51,9 @@ public static class Archives
     public record ArchivesCountResponse(
         int Count) : Response;
 
+    public record GetArchiveInfoRequest(
+        int Id) : Request;
+    
     public record GetArchivesRequest(
         int? GroupId,
         int? GameId,

@@ -42,7 +42,9 @@ public static class ApiConstants
     public enum ApiMethods
     {
         ///<summary>GET request</summary>
-        GetActiveGroups = 100,
+        GetActiveGroupInfo = 100,
+        ///<summary>GET request</summary>
+        GetActiveGroups,
         ///<summary>GET request</summary>
         GetActiveGroupsStatistic,
         ///<summary>GET request</summary>
@@ -57,7 +59,9 @@ public static class ApiConstants
         DeleteActiveGroup,
 
         ///<summary>GET request</summary>
-        GetActives = 200,
+        GetActiveInfo = 200,
+        ///<summary>GET request</summary>
+        GetActives,
         ///<summary>GET request</summary>
         GetActivesStatistic,
         ///<summary>GET request</summary>
@@ -74,7 +78,9 @@ public static class ApiConstants
         DeleteActive,
 
         ///<summary>GET request</summary>
-        GetArchiveGroups = 300,
+        GetArchiveGroupInfo = 300,
+        ///<summary>GET request</summary>
+        GetArchiveGroups,
         ///<summary>GET request</summary>
         GetArchiveGroupsStatistic,
         ///<summary>GET request</summary>
@@ -87,7 +93,9 @@ public static class ApiConstants
         DeleteArchiveGroup,
 
         ///<summary>GET request</summary>
-        GetArchives = 400,
+        GetArchiveInfo = 400,
+        ///<summary>GET request</summary>
+        GetArchives,
         ///<summary>GET request</summary>
         GetArchivesStatistic,
         ///<summary>GET request</summary>

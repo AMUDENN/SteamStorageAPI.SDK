@@ -52,6 +52,9 @@ public static class Actives
     public record ActivesCountResponse(
         int Count) : Response;
 
+    public record GetActiveInfoRequest(
+        int Id) : Request;
+    
     public record GetActivesRequest(
         int? GroupId,
         int? GameId,

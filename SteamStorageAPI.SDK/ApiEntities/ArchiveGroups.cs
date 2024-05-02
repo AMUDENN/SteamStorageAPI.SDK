@@ -62,6 +62,9 @@ public static class ArchiveGroups
     public record ArchiveGroupsCountResponse(
         int Count) : Response;
 
+    public record GetArchiveGroupInfoRequest(
+        int GroupId) : Request;
+    
     public record GetArchiveGroupsRequest(
         ArchiveGroupOrderName? OrderName,
         bool? IsAscending) : Request;

@@ -61,7 +61,7 @@ public static class Skins
     public record SavedSkinsCountResponse(
         int Count) : Response;
 
-    public record GetSkinRequest(
+    public record GetSkinInfoRequest(
         int SkinId) : Request;
 
     public record GetBaseSkinsRequest(
