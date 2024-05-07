@@ -30,11 +30,11 @@ public static class ServiceCollectionExtensions
                     client.DefaultRequestHeaders.Add("Accept", "application/json");
                 })
             .AddHttpMessageHandler<TokenHandler>()
-            .AddHttpMessageHandler<UnauthorizedHandler>();
+            .AddHttpMessageHandler<ApiExceptionHandler>();
         //TokenHandler
         services.AddTransient<TokenHandler>();
         //UnauthorizedHandler
-        services.AddTransient<UnauthorizedHandler>();
+        services.AddTransient<ApiExceptionHandler>();
         //ApiClient
         services.AddSingleton<ApiClient>();
 
@@ -60,11 +60,11 @@ public static class ServiceCollectionExtensions
                     client.DefaultRequestHeaders.Add("Accept", "application/json");
                 })
             .AddHttpMessageHandler<WebTokenHandler>()
-            .AddHttpMessageHandler<WebUnauthorizedHandler>();
+            .AddHttpMessageHandler<WebApiExceptionHandler>();
         //TokenHandler
         services.AddTransient<WebTokenHandler>();
         //UnauthorizedHandler
-        services.AddTransient<WebUnauthorizedHandler>();
+        services.AddTransient<WebApiExceptionHandler>();
         //ApiClient
         services.AddScoped<ApiClient>();
 

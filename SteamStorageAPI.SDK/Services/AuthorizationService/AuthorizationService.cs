@@ -1,5 +1,4 @@
-﻿using System.Net;
-using Microsoft.AspNetCore.SignalR.Client;
+﻿using Microsoft.AspNetCore.SignalR.Client;
 using SteamStorageAPI.SDK.ApiEntities;
 using SteamStorageAPI.SDK.Utilities;
 

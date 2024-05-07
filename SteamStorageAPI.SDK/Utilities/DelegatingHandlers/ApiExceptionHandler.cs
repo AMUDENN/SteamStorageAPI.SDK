@@ -1,13 +1,10 @@
-﻿using System.Net;
-using SteamStorageAPI.SDK.Services.Logger.LoggerService;
+﻿using SteamStorageAPI.SDK.Utilities.Exceptions;
 
 namespace SteamStorageAPI.SDK.Utilities.DelegatingHandlers;
 
-public class UnauthorizedHandler : DelegatingHandler
+public class ApiExceptionHandler : DelegatingHandler
 {
     #region Fields
-
-    private readonly ILoggerService _logger;
 
     private readonly ApiClient _apiClient;
 
@@ -15,16 +12,14 @@ public class UnauthorizedHandler : DelegatingHandler
 
     #region Constructor
 
-    public UnauthorizedHandler(
-        ILoggerService logger,
+    public ApiExceptionHandler(
         ApiClient apiClient)
     {
-        _logger = logger;
         _apiClient = apiClient;
     }
 
     #endregion Constructor
-
+    
     #region Methods
 
     protected override async Task<HttpResponseMessage> SendAsync(
@@ -32,12 +27,8 @@ public class UnauthorizedHandler : DelegatingHandler
         CancellationToken cancellationToken)
     {
         HttpResponseMessage response = await base.SendAsync(request, cancellationToken);
-
-        if (response.StatusCode != HttpStatusCode.Unauthorized) return response;
-
-        _apiClient.Token = string.Empty;
-        await _logger.LogAsync("Unauthorized request");
-
+        ApiException.ThrowIfUnauthorizedAccess(response, _apiClient);
+        await ApiException.ThrowIfErrorAsync(response, cancellationToken);
         return response;
     }
 
