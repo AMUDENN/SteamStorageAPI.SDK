@@ -6,6 +6,14 @@ namespace SteamStorageAPI.SDK.Services.AuthorizationService;
 
 public class AuthorizationService : IAuthorizationService
 {
+    #region Events
+
+    public event IAuthorizationService.AuthorizationCompletedEventHandler? AuthorizationCompleted;
+    
+    public event IAuthorizationService.LogOutCompletedEventHandler? LogOutCompleted;
+
+    #endregion Events
+    
     #region Fields
 
     private readonly ApiClient _apiClient;
@@ -44,6 +52,7 @@ public class AuthorizationService : IAuthorizationService
             {
                 _apiClient.Token = token;
                 await hubConnection.StopAsync();
+                OnAuthorizationCompleted();
             });
 
         await hubConnection.StartAsync();
@@ -66,6 +75,17 @@ public class AuthorizationService : IAuthorizationService
     public async void LogOut()
     {
         await Task.Run(() => _apiClient.Token = string.Empty);
+        OnLogOutCompleted();
+    }
+    
+    private void OnAuthorizationCompleted()
+    {
+        AuthorizationCompleted?.Invoke(this);
+    }
+    
+    private void OnLogOutCompleted()
+    {
+        LogOutCompleted?.Invoke(this);
     }
 
     #endregion Methods
