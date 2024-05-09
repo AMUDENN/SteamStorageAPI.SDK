@@ -7,6 +7,7 @@ using SteamStorageAPI.SDK.Services.Logger.LoggerService;
 using SteamStorageAPI.SDK.Utilities;
 using SteamStorageAPI.SDK.Utilities.Events;
 // ReSharper disable UnusedMember.Global
+// ReSharper disable EventNeverSubscribedTo.Global
 
 namespace SteamStorageAPI.SDK;
 
@@ -17,6 +18,14 @@ public class ApiClient
     public delegate void TokenChangedEventHandler(object? sender, TokenChangedEventArgs args);
 
     public event TokenChangedEventHandler? TokenChanged;
+
+    public delegate void OperationCanceledHandler(object? sender);
+
+    public event OperationCanceledHandler? OperationCanceled;
+
+    public delegate void ApiExceptionHandler(object? sender, ApiExceptionEventArgs args);
+
+    public event ApiExceptionHandler? ApiException;
 
     #endregion Events
 
@@ -72,11 +81,13 @@ public class ApiClient
         catch (OperationCanceledException)
         {
             Debug.WriteLine($"Task {uri.ToString()} was cancelled");
+            OnOperationCanceled();
             return default;
         }
         catch (Exception ex)
         {
             await _logger.LogAsync($"ApiException GET \n{uri.ToString()}", ex);
+            OnApiException(ex);
             return default;
         }
     }
@@ -118,15 +129,17 @@ public class ApiClient
         catch (OperationCanceledException)
         {
             Debug.WriteLine($"Task {uri.ToString()} was cancelled");
+            OnOperationCanceled();
             return default;
         }
         catch (Exception ex)
         {
             await _logger.LogAsync($"ApiException GET File \n{uri.ToString()}", ex);
+            OnApiException(ex);
             return default;
         }
     }
-    
+
     public async Task<(Stream stream, string fileName)> GetFileAsync(
         ApiConstants.ApiMethods apiMethod,
         CancellationToken cancellationToken = default)
@@ -144,11 +157,13 @@ public class ApiClient
         catch (OperationCanceledException)
         {
             Debug.WriteLine($"Task {uri.ToString()} was cancelled");
+            OnOperationCanceled();
             return default;
         }
         catch (Exception ex)
         {
             await _logger.LogAsync($"ApiException GET File \n{uri.ToString()}", ex);
+            OnApiException(ex);
             return default;
         }
     }
@@ -171,10 +186,12 @@ public class ApiClient
         catch (OperationCanceledException)
         {
             Debug.WriteLine($"Task {uri.ToString()} was cancelled");
+            OnOperationCanceled();
         }
         catch (Exception ex)
         {
             await _logger.LogAsync($"ApiException POST \n{uri.ToString()}", ex);
+            OnApiException(ex);
         }
     }
 
@@ -201,9 +218,9 @@ public class ApiClient
     }
 
     #endregion POST
-    
+
     #region PUT
-    
+
     private async Task PutAsync<TIn>(
         Uri uri,
         TIn? args = null,
@@ -218,13 +235,15 @@ public class ApiClient
         catch (OperationCanceledException)
         {
             Debug.WriteLine($"Task {uri.ToString()} was cancelled");
+            OnOperationCanceled();
         }
         catch (Exception ex)
         {
             await _logger.LogAsync($"ApiException PUT \n{uri.ToString()}", ex);
+            OnApiException(ex);
         }
     }
-    
+
     public async Task PutAsync<TIn>(
         ApiConstants.ApiMethods apiMethod,
         TIn? args = null,
@@ -246,7 +265,7 @@ public class ApiClient
             null,
             cancellationToken);
     }
-    
+
     #endregion PUT
 
     #region DELETE
@@ -271,10 +290,12 @@ public class ApiClient
         catch (OperationCanceledException)
         {
             Debug.WriteLine($"Task {uri.ToString()} was cancelled");
+            OnOperationCanceled();
         }
         catch (Exception ex)
         {
             await _logger.LogAsync($"ApiException DELETE \n{uri.ToString()}", ex);
+            OnApiException(ex);
         }
     }
 
@@ -351,6 +372,17 @@ public class ApiClient
         string token)
     {
         TokenChanged?.Invoke(this, new(token));
+    }
+
+    private void OnOperationCanceled()
+    {
+        OperationCanceled?.Invoke(this);
+    }
+
+    private void OnApiException(
+        Exception exception)
+    {
+        ApiException?.Invoke(this, new(exception));
     }
 
     #endregion Methods
