@@ -1,4 +1,6 @@
-﻿using SteamStorageAPI.SDK.ApiEntities.Tools;
+﻿using SteamStorageAPI.SDK.ApiEntities.Tools.Request;
+using SteamStorageAPI.SDK.ApiEntities.Tools.Response;
+
 // ReSharper disable NotAccessedPositionalProperty.Global
 // ReSharper disable UnusedType.Global
 
@@ -26,7 +28,7 @@ public static class Inventory
         int Count,
         decimal CurrentPrice,
         decimal CurrentSum) : Response;
-    
+
     public record InventoriesResponse(
         int Count,
         int PagesCount,
@@ -41,7 +43,7 @@ public static class Inventory
         string GameTitle,
         double Percentage,
         decimal Sum) : Response;
-    
+
     public record InventoriesStatisticResponse(
         int InventoriesCount,
         decimal CurrentSum,
@@ -61,7 +63,7 @@ public static class Inventory
         bool? IsAscending,
         int PageNumber,
         int PageSize) : Request;
-    
+
     public record GetInventoriesStatisticRequest(
         int? GameId,
         string? Filter) : Request;

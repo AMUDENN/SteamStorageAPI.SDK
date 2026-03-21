@@ -1,4 +1,6 @@
-﻿using SteamStorageAPI.SDK.ApiEntities.Tools;
+﻿using SteamStorageAPI.SDK.ApiEntities.Tools.Request;
+using SteamStorageAPI.SDK.ApiEntities.Tools.Response;
+
 // ReSharper disable NotAccessedPositionalProperty.Global
 // ReSharper disable UnusedType.Global
 
@@ -23,7 +25,7 @@ public static class Users
         int CurrencyId,
         DateTime DateRegistration,
         decimal? GoalSum) : Response;
-    
+
     public record UsersResponse(
         int Count,
         int PagesCount,
@@ -31,17 +33,17 @@ public static class Users
 
     public record UsersCountResponse(
         int Count) : Response;
-    
+
     public record GoalSumResponse(
         decimal? GoalSum) : Response;
-    
+
     public record HasAccessToAdminPanelResponse(
         bool HasAccess) : Response;
 
     public record GetUsersRequest(
         int PageNumber,
         int PageSize) : Request;
-    
+
     public record GetUserRequest(
         int UserId) : Request;
 

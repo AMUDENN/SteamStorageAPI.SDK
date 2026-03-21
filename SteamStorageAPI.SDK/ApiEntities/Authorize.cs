@@ -1,4 +1,6 @@
-﻿using SteamStorageAPI.SDK.ApiEntities.Tools;
+﻿using SteamStorageAPI.SDK.ApiEntities.Tools.Request;
+using SteamStorageAPI.SDK.ApiEntities.Tools.Response;
+
 // ReSharper disable NotAccessedPositionalProperty.Global
 // ReSharper disable UnusedType.Global
 
@@ -10,7 +12,7 @@ public static class Authorize
 
     public record GetAuthUrlRequest(
         string? ReturnTo) : Request;
-    
+
     public record AuthUrlResponse(
         string Url,
         string Group) : Response;

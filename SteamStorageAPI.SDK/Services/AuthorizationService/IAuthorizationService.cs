@@ -7,15 +7,15 @@ public interface IAuthorizationService
 {
     public delegate void AuthorizationCompletedEventHandler(object? sender);
 
-    public event AuthorizationCompletedEventHandler? AuthorizationCompleted;
-    
     public delegate void LogOutCompletedEventHandler(object? sender);
 
+    public event AuthorizationCompletedEventHandler? AuthorizationCompleted;
+
     public event LogOutCompletedEventHandler? LogOutCompleted;
-    
-    public void LogIn();
 
-    public void LogIn(string returnTo);
+    public Task LogInAsync(CancellationToken cancellationToken = default);
 
-    public void LogOut();
+    public Task LogInAsync(string returnTo, CancellationToken cancellationToken = default);
+
+    public Task LogOutAsync(CancellationToken cancellationToken = default);
 }

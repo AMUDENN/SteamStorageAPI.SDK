@@ -1,17 +1,20 @@
-﻿namespace SteamStorageAPI.SDK.Utilities.DelegatingHandlers;
+﻿using System.Net.Http.Headers;
+using SteamStorageAPI.SDK.ApiClient;
+
+namespace SteamStorageAPI.SDK.Utilities.DelegatingHandlers;
 
 public class TokenHandler : DelegatingHandler
 {
     #region Fields
 
-    private readonly ApiClient _apiClient;
+    private readonly IApiClient _apiClient;
 
     #endregion Fields
 
     #region Constructor
 
     public TokenHandler(
-        ApiClient apiClient)
+        IApiClient apiClient)
     {
         _apiClient = apiClient;
     }
@@ -25,7 +28,7 @@ public class TokenHandler : DelegatingHandler
         CancellationToken cancellationToken)
     {
         if (!string.IsNullOrEmpty(_apiClient.Token))
-            request.Headers.Authorization = new("Bearer", _apiClient.Token);
+            request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", _apiClient.Token);
 
         return await base.SendAsync(request, cancellationToken);
     }

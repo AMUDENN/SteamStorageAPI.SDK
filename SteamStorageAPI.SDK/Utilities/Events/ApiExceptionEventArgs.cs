@@ -1,22 +1,24 @@
 ﻿// ReSharper disable UnusedAutoPropertyAccessor.Global
 
+using SteamStorageAPI.SDK.Utilities.Exceptions;
+
 namespace SteamStorageAPI.SDK.Utilities.Events;
 
 public class ApiExceptionEventArgs : EventArgs
 {
-    #region Properties
-
-    public Exception Exception { get; }
-
-    #endregion Properties
-
     #region Constructor
 
     public ApiExceptionEventArgs(
-        Exception exception)
+        ApiException exception)
     {
         Exception = exception;
     }
 
     #endregion Constructor
+
+    #region Properties
+
+    public ApiException Exception { get; }
+
+    #endregion Properties
 }

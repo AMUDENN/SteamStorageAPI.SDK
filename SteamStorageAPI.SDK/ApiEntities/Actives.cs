@@ -1,4 +1,6 @@
-﻿using SteamStorageAPI.SDK.ApiEntities.Tools;
+﻿using SteamStorageAPI.SDK.ApiEntities.Tools.Request;
+using SteamStorageAPI.SDK.ApiEntities.Tools.Response;
+
 // ReSharper disable NotAccessedPositionalProperty.Global
 // ReSharper disable UnusedType.Global
 
@@ -40,7 +42,7 @@ public static class Actives
         int Count,
         int PagesCount,
         IEnumerable<ActiveResponse>? Actives) : Response;
-    
+
     public record ActivesStatisticResponse(
         int ActivesCount,
         decimal InvestmentSum,
@@ -54,7 +56,7 @@ public static class Actives
 
     public record GetActiveInfoRequest(
         int Id) : Request;
-    
+
     public record GetActivesRequest(
         int? GroupId,
         int? GameId,
@@ -63,7 +65,7 @@ public static class Actives
         bool? IsAscending,
         int PageNumber,
         int PageSize) : Request;
-    
+
     public record GetActivesStatisticRequest(
         int? GroupId,
         int? GameId,

@@ -1,4 +1,6 @@
-﻿using SteamStorageAPI.SDK.ApiEntities.Tools;
+﻿using SteamStorageAPI.SDK.ApiEntities.Tools.Request;
+using SteamStorageAPI.SDK.ApiEntities.Tools.Response;
+
 // ReSharper disable NotAccessedPositionalProperty.Global
 // ReSharper disable UnusedType.Global
 
@@ -37,7 +39,7 @@ public static class ActiveGroups
     public record ActiveGroupsResponse(
         int Count,
         IEnumerable<ActiveGroupResponse>? ActiveGroups) : Response;
-    
+
     public record ActiveGroupsGameCountResponse(
         string GameTitle,
         double Percentage,
@@ -47,7 +49,7 @@ public static class ActiveGroups
         string GameTitle,
         double Percentage,
         decimal InvestmentSum) : Response;
-        
+
     public record ActiveGroupsGameCurrentSumResponse(
         string GameTitle,
         double Percentage,
@@ -75,7 +77,7 @@ public static class ActiveGroups
 
     public record GetActiveGroupInfoRequest(
         int GroupId) : Request;
-    
+
     public record GetActiveGroupsRequest(
         ActiveGroupOrderName? OrderName,
         bool? IsAscending) : Request;
@@ -90,14 +92,14 @@ public static class ActiveGroups
         string? Description,
         string? Colour,
         decimal? GoalSum) : Request;
-    
+
     public record PutActiveGroupRequest(
         int GroupId,
         string Title,
         string? Description,
         string? Colour,
         decimal? GoalSum) : Request;
-    
+
     public record DeleteActiveGroupRequest(
         int GroupId) : Request;
 

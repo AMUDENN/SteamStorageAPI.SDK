@@ -1,6 +1,6 @@
 ﻿// ReSharper disable UnusedAutoPropertyAccessor.Global
 
-namespace SteamStorageAPI.SDK.Services.Ping.PingResult;
+namespace SteamStorageAPI.SDK.Services.PingService;
 
 public class PingResult
 {
@@ -15,10 +15,11 @@ public class PingResult
     }
 
     #endregion Enums
-
+    
     #region Properties
 
     public long Ping { get; private set; }
+    
     public ServerStatus Status { get; private set; }
 
     #endregion Properties

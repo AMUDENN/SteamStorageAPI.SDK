@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
+using SteamStorageAPI.SDK.ApiClient;
 using SteamStorageAPI.SDK.Utilities.Exceptions;
 
 namespace SteamStorageAPI.SDK.Utilities.DelegatingHandlers;
@@ -30,11 +31,10 @@ public class WebApiExceptionHandler : DelegatingHandler
     {
         IServiceProvider? services = _httpContextAccessor.HttpContext?.RequestServices;
 
-        ApiClient? apiClient = services?.GetRequiredService<ApiClient>();
+        IApiClient? apiClient = services?.GetRequiredService<IApiClient>();
 
         HttpResponseMessage response = await base.SendAsync(request, cancellationToken);
-        ApiException.ThrowIfUnauthorizedAccess(response, apiClient);
-        await ApiException.ThrowIfErrorAsync(response, cancellationToken);
+        await ApiException.ThrowIfErrorAsync(response, apiClient, cancellationToken);
         return response;
     }
 

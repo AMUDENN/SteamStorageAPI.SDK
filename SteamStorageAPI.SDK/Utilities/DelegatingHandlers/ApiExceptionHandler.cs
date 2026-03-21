@@ -1,4 +1,5 @@
-﻿using SteamStorageAPI.SDK.Utilities.Exceptions;
+﻿using SteamStorageAPI.SDK.ApiClient;
+using SteamStorageAPI.SDK.Utilities.Exceptions;
 
 namespace SteamStorageAPI.SDK.Utilities.DelegatingHandlers;
 
@@ -6,20 +7,20 @@ public class ApiExceptionHandler : DelegatingHandler
 {
     #region Fields
 
-    private readonly ApiClient _apiClient;
+    private readonly IApiClient _apiClient;
 
     #endregion Fields
 
     #region Constructor
 
     public ApiExceptionHandler(
-        ApiClient apiClient)
+        IApiClient apiClient)
     {
         _apiClient = apiClient;
     }
 
     #endregion Constructor
-    
+
     #region Methods
 
     protected override async Task<HttpResponseMessage> SendAsync(
@@ -27,8 +28,7 @@ public class ApiExceptionHandler : DelegatingHandler
         CancellationToken cancellationToken)
     {
         HttpResponseMessage response = await base.SendAsync(request, cancellationToken);
-        ApiException.ThrowIfUnauthorizedAccess(response, _apiClient);
-        await ApiException.ThrowIfErrorAsync(response, cancellationToken);
+        await ApiException.ThrowIfErrorAsync(response, _apiClient, cancellationToken);
         return response;
     }
 
