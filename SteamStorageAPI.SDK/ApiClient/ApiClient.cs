@@ -15,6 +15,31 @@ namespace SteamStorageAPI.SDK.ApiClient;
 
 public class ApiClient : IApiClient
 {
+    #region Constructor
+
+    public ApiClient(
+        ILogger<IApiClient>? logger,
+        IHttpClientFactory httpClientFactory,
+        string clientName,
+        string hostName,
+        string serverAddress,
+        string apiAddress,
+        string tokenHubEndpoint)
+    {
+        _logger = logger;
+        _httpClientFactory = httpClientFactory;
+
+        ClientName = clientName;
+        HostName = hostName;
+        ServerAddress = serverAddress;
+        ApiAddress = apiAddress;
+        TokenHubEndpoint = tokenHubEndpoint;
+
+        _token = null;
+    }
+
+    #endregion Constructor
+
     #region Fields
 
     private readonly ILogger<IApiClient>? _logger;
@@ -48,31 +73,6 @@ public class ApiClient : IApiClient
 
     #endregion Properties
 
-    #region Constructor
-
-    public ApiClient(
-        ILogger<IApiClient>? logger,
-        IHttpClientFactory httpClientFactory,
-        string clientName,
-        string hostName,
-        string serverAddress,
-        string apiAddress,
-        string tokenHubEndpoint)
-    {
-        _logger = logger;
-        _httpClientFactory = httpClientFactory;
-
-        ClientName = clientName;
-        HostName = hostName;
-        ServerAddress = serverAddress;
-        ApiAddress = apiAddress;
-        TokenHubEndpoint = tokenHubEndpoint;
-
-        _token = null;
-    }
-
-    #endregion Constructor
-
     #region Events
 
     public event IApiClient.TokenChangedEventHandler? TokenChanged;
@@ -81,7 +81,7 @@ public class ApiClient : IApiClient
 
     public event IApiClient.ApiExceptionHandler? ApiException;
 
-    public event IApiClient.OtherExceptionHandler? Exception;
+    public event IApiClient.UnhandledExceptionHandler? Exception;
 
     #endregion Events
 
@@ -110,7 +110,7 @@ public class ApiClient : IApiClient
         catch (Exception ex)
         {
             _logger?.LogError(ex, "Exception {Uri}", uri);
-            OnOtherException(ex);
+            OnUnhandledException(ex);
             return default;
         }
     }
@@ -356,9 +356,9 @@ public class ApiClient : IApiClient
         ApiException?.Invoke(this, new ApiExceptionEventArgs(exception));
     }
 
-    private void OnOtherException(Exception exception)
+    private void OnUnhandledException(Exception exception)
     {
-        Exception?.Invoke(this, new OtherExceptionEventArgs(exception));
+        Exception?.Invoke(this, new UnhandledExceptionEventArgs(exception, false));
     }
 
     #endregion Methods

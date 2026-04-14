@@ -31,7 +31,7 @@ public class WebApiExceptionHandler : DelegatingHandler
     {
         IServiceProvider? services = _httpContextAccessor.HttpContext?.RequestServices;
 
-        IApiClient? apiClient = services?.GetRequiredService<IApiClient>();
+        IApiClient? apiClient = services?.GetService<IApiClient>();
 
         HttpResponseMessage response = await base.SendAsync(request, cancellationToken);
         await ApiException.ThrowIfErrorAsync(response, apiClient, cancellationToken);

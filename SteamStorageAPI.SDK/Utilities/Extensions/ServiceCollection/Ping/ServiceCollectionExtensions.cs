@@ -7,7 +7,7 @@ using SteamStorageAPI.SDK.Services.PingService;
 
 namespace SteamStorageAPI.SDK.Utilities.Extensions.ServiceCollection.Ping;
 
-public static partial class ServiceCollectionExtensions
+public static class ServiceCollectionExtensions
 {
     #region Methods
 

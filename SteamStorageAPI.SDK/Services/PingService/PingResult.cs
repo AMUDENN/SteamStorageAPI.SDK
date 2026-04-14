@@ -15,14 +15,6 @@ public class PingResult
     }
 
     #endregion Enums
-    
-    #region Properties
-
-    public long Ping { get; private set; }
-    
-    public ServerStatus Status { get; private set; }
-
-    #endregion Properties
 
     #region Constructor
 
@@ -40,4 +32,12 @@ public class PingResult
     }
 
     #endregion Constructor
+
+    #region Properties
+
+    public long Ping { get; private set; }
+
+    public ServerStatus Status { get; private set; }
+
+    #endregion Properties
 }

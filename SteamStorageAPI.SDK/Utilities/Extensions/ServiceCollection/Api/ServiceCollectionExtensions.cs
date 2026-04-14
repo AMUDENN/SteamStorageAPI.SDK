@@ -8,81 +8,80 @@ using SteamStorageAPI.SDK.Utilities.DelegatingHandlers;
 
 namespace SteamStorageAPI.SDK.Utilities.Extensions.ServiceCollection.Api;
 
-public static partial class ServiceCollectionExtensions
+public static class ServiceCollectionExtensions
 {
     #region Methods
 
-    public static IServiceCollection AddSteamStorageApi(
-        this IServiceCollection services,
-        Action<ApiClientOptions>? configureOptions)
+    extension(IServiceCollection services)
     {
-        ApiClientOptions clientOptions = new();
-        configureOptions?.Invoke(clientOptions);
+        public IServiceCollection AddSteamStorageApi(Action<ApiClientOptions>? configureOptions)
+        {
+            ApiClientOptions clientOptions = new();
+            configureOptions?.Invoke(clientOptions);
 
-        //Main HttpClient
-        services.AddHttpClient(clientOptions.ClientName,
-                client =>
-                {
-                    client.Timeout = TimeSpan.FromSeconds(clientOptions.ClientTimeout);
-                    client.DefaultRequestHeaders.Clear();
-                    client.DefaultRequestHeaders.Add("Accept", "application/json");
-                })
-            .AddHttpMessageHandler<TokenHandler>()
-            .AddHttpMessageHandler<ApiExceptionHandler>();
-        //TokenHandler
-        services.AddTransient<TokenHandler>();
-        //UnauthorizedHandler
-        services.AddTransient<ApiExceptionHandler>();
-        //ApiClient
-        services.AddSingleton<IApiClient, ApiClient.ApiClient>(x => 
-            new ApiClient.ApiClient(
-                x.GetService<ILogger<IApiClient>>(),
-                x.GetRequiredService<IHttpClientFactory>(),
-                clientOptions.ClientName,
-                clientOptions.HostName,
-                clientOptions.ServerAddress,
-                clientOptions.ApiAddress,
-                clientOptions.TokenHubEndpoint));
+            //Main HttpClient
+            services.AddHttpClient(clientOptions.ClientName,
+                    client =>
+                    {
+                        client.Timeout = TimeSpan.FromSeconds(clientOptions.ClientTimeout);
+                        client.DefaultRequestHeaders.Clear();
+                        client.DefaultRequestHeaders.Add("Accept", "application/json");
+                    })
+                .AddHttpMessageHandler<TokenHandler>()
+                .AddHttpMessageHandler<ApiExceptionHandler>();
+            //TokenHandler
+            services.AddTransient<TokenHandler>();
+            //UnauthorizedHandler
+            services.AddTransient<ApiExceptionHandler>();
+            //ApiClient
+            services.AddSingleton<IApiClient, ApiClient.ApiClient>(x =>
+                new ApiClient.ApiClient(
+                    x.GetService<ILogger<IApiClient>>(),
+                    x.GetRequiredService<IHttpClientFactory>(),
+                    clientOptions.ClientName,
+                    clientOptions.HostName,
+                    clientOptions.ServerAddress,
+                    clientOptions.ApiAddress,
+                    clientOptions.TokenHubEndpoint));
 
-        return services;
-    }
+            return services;
+        }
 
-    public static IServiceCollection AddSteamStorageApiWeb(
-        this IServiceCollection services,
-        Action<ApiClientOptions>? configureOptions)
-    {
-        ApiClientOptions clientOptions = new();
-        configureOptions?.Invoke(clientOptions);
+        public IServiceCollection AddSteamStorageApiWeb(Action<ApiClientOptions>? configureOptions)
+        {
+            ApiClientOptions clientOptions = new();
+            configureOptions?.Invoke(clientOptions);
 
-        //HttpContextAccessor
-        services.AddHttpContextAccessor();
+            //HttpContextAccessor
+            services.AddHttpContextAccessor();
 
-        //Main HttpClient
-        services.AddHttpClient(clientOptions.ClientName,
-                client =>
-                {
-                    client.Timeout = TimeSpan.FromSeconds(clientOptions.ClientTimeout);
-                    client.DefaultRequestHeaders.Clear();
-                    client.DefaultRequestHeaders.Add("Accept", "application/json");
-                })
-            .AddHttpMessageHandler<WebTokenHandler>()
-            .AddHttpMessageHandler<WebApiExceptionHandler>();
-        //TokenHandler
-        services.AddTransient<WebTokenHandler>();
-        //UnauthorizedHandler
-        services.AddTransient<WebApiExceptionHandler>();
-        //ApiClient
-        services.AddScoped<IApiClient, ApiClient.ApiClient>(x => 
-            new ApiClient.ApiClient(
-                x.GetService<ILogger<IApiClient>>(),
-                x.GetRequiredService<IHttpClientFactory>(),
-                clientOptions.ClientName,
-                clientOptions.HostName,
-                clientOptions.ServerAddress,
-                clientOptions.ApiAddress,
-                clientOptions.TokenHubEndpoint));
+            //Main HttpClient
+            services.AddHttpClient(clientOptions.ClientName,
+                    client =>
+                    {
+                        client.Timeout = TimeSpan.FromSeconds(clientOptions.ClientTimeout);
+                        client.DefaultRequestHeaders.Clear();
+                        client.DefaultRequestHeaders.Add("Accept", "application/json");
+                    })
+                .AddHttpMessageHandler<WebTokenHandler>()
+                .AddHttpMessageHandler<WebApiExceptionHandler>();
+            //TokenHandler
+            services.AddTransient<WebTokenHandler>();
+            //UnauthorizedHandler
+            services.AddTransient<WebApiExceptionHandler>();
+            //ApiClient
+            services.AddScoped<IApiClient, ApiClient.ApiClient>(x =>
+                new ApiClient.ApiClient(
+                    x.GetService<ILogger<IApiClient>>(),
+                    x.GetRequiredService<IHttpClientFactory>(),
+                    clientOptions.ClientName,
+                    clientOptions.HostName,
+                    clientOptions.ServerAddress,
+                    clientOptions.ApiAddress,
+                    clientOptions.TokenHubEndpoint));
 
-        return services;
+            return services;
+        }
     }
 
     #endregion Methods

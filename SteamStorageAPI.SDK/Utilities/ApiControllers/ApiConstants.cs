@@ -15,8 +15,8 @@ public static class ApiConstants
 
     #region Constants
 
-    internal const string TOKEN_METHOD_NAME = "Token";
-    internal const string JOIN_GROUP_METHOD_NAME = "JoinGroup";
+    internal const string TokenMethodName = "Token";
+    internal const string JoinGroupMethodName = "JoinGroup";
 
     #endregion Constants
 
@@ -243,64 +243,49 @@ public static class ApiConstants
         RefreshInventory,
 
         ///<summary>GET request</summary>
-        [ApiController(ApiControllers.Pages)] 
-        GetPages = 1000,
+        [ApiController(ApiControllers.Pages)] GetPages = 1000,
 
         ///<summary>GET request</summary>
-        [ApiController(ApiControllers.Pages)] 
-        GetCurrentStartPage,
+        [ApiController(ApiControllers.Pages)] GetCurrentStartPage,
 
         ///<summary>PUT request</summary>
-        [ApiController(ApiControllers.Pages)] 
-        SetStartPage,
+        [ApiController(ApiControllers.Pages)] SetStartPage,
 
         ///<summary>GET request</summary>
-        [ApiController(ApiControllers.Roles)] 
-        GetRoles = 1100,
+        [ApiController(ApiControllers.Roles)] GetRoles = 1100,
 
         ///<summary>PUT request</summary>
-        [ApiController(ApiControllers.Roles)] 
-        SetRole,
+        [ApiController(ApiControllers.Roles)] SetRole,
 
         ///<summary>GET request</summary>
-        [ApiController(ApiControllers.Skins)]
-        GetSkinInfo = 1200,
+        [ApiController(ApiControllers.Skins)] GetSkinInfo = 1200,
 
         ///<summary>GET request</summary>
-        [ApiController(ApiControllers.Skins)] 
-        GetBaseSkins,
+        [ApiController(ApiControllers.Skins)] GetBaseSkins,
 
         ///<summary>GET request</summary>
-        [ApiController(ApiControllers.Skins)] 
-        GetSkins,
+        [ApiController(ApiControllers.Skins)] GetSkins,
 
         ///<summary>GET request</summary>
-        [ApiController(ApiControllers.Skins)] 
-        GetSkinDynamics,
+        [ApiController(ApiControllers.Skins)] GetSkinDynamics,
 
         ///<summary>GET request</summary>
-        [ApiController(ApiControllers.Skins)] 
-        GetSkinPagesCount,
+        [ApiController(ApiControllers.Skins)] GetSkinPagesCount,
 
         ///<summary>GET request</summary>
-        [ApiController(ApiControllers.Skins)] 
-        GetSteamSkinsCount,
+        [ApiController(ApiControllers.Skins)] GetSteamSkinsCount,
 
         ///<summary>GET request</summary>
-        [ApiController(ApiControllers.Skins)] 
-        GetSavedSkinsCount,
+        [ApiController(ApiControllers.Skins)] GetSavedSkinsCount,
 
         ///<summary>POST request</summary>
-        [ApiController(ApiControllers.Skins)] 
-        PostSkin,
+        [ApiController(ApiControllers.Skins)] PostSkin,
 
         ///<summary>PUT request</summary>
-        [ApiController(ApiControllers.Skins)] 
-        SetMarkedSkin,
+        [ApiController(ApiControllers.Skins)] SetMarkedSkin,
 
         ///<summary>DELETE request</summary>
-        [ApiController(ApiControllers.Skins)] 
-        DeleteMarkedSkin,
+        [ApiController(ApiControllers.Skins)] DeleteMarkedSkin,
 
         ///<summary>GET request</summary>
         [ApiController(ApiControllers.Statistics)]
@@ -327,36 +312,28 @@ public static class ApiConstants
         GetItemsCount,
 
         ///<summary>GET request</summary>
-        [ApiController(ApiControllers.Users)] 
-        GetUsers = 1400,
+        [ApiController(ApiControllers.Users)] GetUsers = 1400,
 
         ///<summary>GET request</summary>
-        [ApiController(ApiControllers.Users)] 
-        GetUsersCount,
+        [ApiController(ApiControllers.Users)] GetUsersCount,
 
         ///<summary>GET request</summary>
-        [ApiController(ApiControllers.Users)] 
-        GetUserInfo,
+        [ApiController(ApiControllers.Users)] GetUserInfo,
 
         ///<summary>GET request</summary>
-        [ApiController(ApiControllers.Users)] 
-        GetCurrentUserInfo,
+        [ApiController(ApiControllers.Users)] GetCurrentUserInfo,
 
         ///<summary>GET request</summary>
-        [ApiController(ApiControllers.Users)] 
-        GetCurrentUserGoalSum,
+        [ApiController(ApiControllers.Users)] GetCurrentUserGoalSum,
 
         ///<summary>GET request</summary>
-        [ApiController(ApiControllers.Users)] 
-        GetHasAccessToAdminPanel,
+        [ApiController(ApiControllers.Users)] GetHasAccessToAdminPanel,
 
         ///<summary>PUT request</summary>
-        [ApiController(ApiControllers.Users)] 
-        PutGoalSum,
+        [ApiController(ApiControllers.Users)] PutGoalSum,
 
         ///<summary>DELETE request</summary>
-        [ApiController(ApiControllers.Users)] 
-        DeleteUser
+        [ApiController(ApiControllers.Users)] DeleteUser
     }
 
     #endregion Enums

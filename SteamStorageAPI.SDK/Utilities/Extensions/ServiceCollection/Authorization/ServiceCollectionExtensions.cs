@@ -7,7 +7,7 @@ using SteamStorageAPI.SDK.Services.AuthorizationService;
 
 namespace SteamStorageAPI.SDK.Utilities.Extensions.ServiceCollection.Authorization;
 
-public static partial class ServiceCollectionExtensions
+public static class ServiceCollectionExtensions
 {
     #region Methods
 
@@ -17,7 +17,7 @@ public static partial class ServiceCollectionExtensions
     {
         AuthorizationServiceOptions options = new();
         configureOptions?.Invoke(options);
-        
+
         //AuthorizationService
         services.AddScoped<IAuthorizationService, AuthorizationService>(x =>
             new AuthorizationService(
@@ -26,6 +26,6 @@ public static partial class ServiceCollectionExtensions
 
         return services;
     }
-    
+
     #endregion Methods
 }

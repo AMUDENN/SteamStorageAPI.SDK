@@ -10,14 +10,6 @@ public static class File
 
     public record FileResponse : Response, IAsyncDisposable, IDisposable
     {
-        #region Properties
-
-        public Stream Stream { get; }
-
-        public string FileName { get; }
-
-        #endregion Properties
-
         #region Constructor
 
         public FileResponse(Stream stream, string fileName)
@@ -27,6 +19,16 @@ public static class File
         }
 
         #endregion Constructor
+
+        #region IAsyncDisposable
+
+        public async ValueTask DisposeAsync()
+        {
+            await Stream.DisposeAsync();
+            GC.SuppressFinalize(this);
+        }
+
+        #endregion IAsyncDisposable
 
         #region IDisposable
 
@@ -38,15 +40,13 @@ public static class File
 
         #endregion IDisposable
 
-        #region IAsyncDisposable
+        #region Properties
 
-        public async ValueTask DisposeAsync()
-        {
-            await Stream.DisposeAsync();
-            GC.SuppressFinalize(this);
-        }
+        public Stream Stream { get; }
 
-        #endregion IAsyncDisposable
+        public string FileName { get; }
+
+        #endregion Properties
     }
 
     #endregion Records

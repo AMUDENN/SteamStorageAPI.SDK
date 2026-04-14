@@ -5,22 +5,14 @@ namespace SteamStorageAPI.SDK.Services.PingService;
 
 public class PingService : IPingService
 {
-    #region Fields
-
-    private readonly IApiClient _apiClient;
-    
-    private readonly TimeSpan _timeout;
-
-    #endregion Fields
-
     #region Constructor
 
     public PingService(
-        IApiClient apiClient, 
+        IApiClient apiClient,
         TimeSpan timeout)
     {
         _apiClient = apiClient;
-        
+
         _timeout = timeout;
     }
 
@@ -32,11 +24,11 @@ public class PingService : IPingService
     {
         try
         {
-            using System.Net.NetworkInformation.Ping pingSender = new();
+            using Ping pingSender = new();
             PingReply reply = await pingSender.SendPingAsync(
-                _apiClient.HostName, 
-                _timeout, 
-                null, 
+                _apiClient.HostName,
+                _timeout,
+                null,
                 null,
                 cancellationToken);
             if (reply.Status == IPStatus.Success) return new PingResult(reply.RoundtripTime);
@@ -50,4 +42,12 @@ public class PingService : IPingService
     }
 
     #endregion Methods
+
+    #region Fields
+
+    private readonly IApiClient _apiClient;
+
+    private readonly TimeSpan _timeout;
+
+    #endregion Fields
 }

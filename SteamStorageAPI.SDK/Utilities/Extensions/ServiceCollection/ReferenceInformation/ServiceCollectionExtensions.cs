@@ -6,7 +6,7 @@ using SteamStorageAPI.SDK.Services.ReferenceInformationService;
 
 namespace SteamStorageAPI.SDK.Utilities.Extensions.ServiceCollection.ReferenceInformation;
 
-public static partial class ServiceCollectionExtensions
+public static class ServiceCollectionExtensions
 {
     #region Methods
 
