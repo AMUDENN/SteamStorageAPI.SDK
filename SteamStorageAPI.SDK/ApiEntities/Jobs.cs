@@ -2,6 +2,9 @@ using SteamStorageAPI.SDK.ApiEntities.Tools.Request;
 
 namespace SteamStorageAPI.SDK.ApiEntities;
 
+// ReSharper disable NotAccessedPositionalProperty.Global
+// ReSharper disable UnusedType.Global
+
 public static class Jobs
 {
     #region Enums
