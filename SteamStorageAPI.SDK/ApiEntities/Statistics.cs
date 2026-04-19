@@ -40,7 +40,7 @@ public static class Statistics
 
     public record ItemsCountResponse(
         int Count) : Response;
-    
+
     public record UsersCountByCurrencyItemResponse(
         int CurrencyId,
         string CurrencyTitle,

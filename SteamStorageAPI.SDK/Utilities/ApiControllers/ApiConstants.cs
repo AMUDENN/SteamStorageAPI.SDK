@@ -186,7 +186,7 @@ public static class ApiConstants
         ///<summary>GET request</summary>
         [ApiController(ApiControllers.Currencies)]
         GetCurrentCurrency,
-        
+
         ///<summary>GET request</summary>
         [ApiController(ApiControllers.Currencies)]
         GetCurrencyDynamics,
@@ -246,7 +246,7 @@ public static class ApiConstants
         ///<summary>POST request</summary>
         [ApiController(ApiControllers.Inventory)]
         RefreshInventory,
-        
+
         ///<summary>POST request</summary>
         [ApiController(ApiControllers.Jobs)]
         TriggerJob,
@@ -319,11 +319,11 @@ public static class ApiConstants
         ///<summary>GET request</summary>
         [ApiController(ApiControllers.Statistics)]
         GetItemsCount,
-        
+
         ///<summary>GET request</summary>
         [ApiController(ApiControllers.Statistics)]
         GetUsersCountByCurrency,
-        
+
         ///<summary>GET request</summary>
         [ApiController(ApiControllers.Statistics)]
         GetItemsCountByGame,
