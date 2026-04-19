@@ -322,6 +322,10 @@ public static class ApiConstants
         
         ///<summary>GET request</summary>
         [ApiController(ApiControllers.Statistics)]
+        GetUsersCountByCurrency,
+        
+        ///<summary>GET request</summary>
+        [ApiController(ApiControllers.Statistics)]
         GetItemsCountByGame,
 
         ///<summary>GET request</summary>

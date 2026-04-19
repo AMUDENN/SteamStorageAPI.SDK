@@ -44,7 +44,8 @@ public static class Users
         int PageNumber,
         int PageSize,
         int? UserId,
-        string? Nickname) : Request;
+        string? Nickname,
+        int? SteamId) : Request;
 
     public record GetUserRequest(
         int UserId) : Request;
