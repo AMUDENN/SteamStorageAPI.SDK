@@ -2,7 +2,7 @@ using SteamStorageAPI.SDK.ApiEntities.Tools.Request;
 using SteamStorageAPI.SDK.ApiEntities.Tools.Response;
 using SteamStorageAPI.SDK.Utilities.ApiControllers;
 using SteamStorageAPI.SDK.Utilities.Events;
-using File = SteamStorageAPI.SDK.ApiEntities.File;
+using File=SteamStorageAPI.SDK.ApiEntities.File;
 
 namespace SteamStorageAPI.SDK.ApiClient;
 

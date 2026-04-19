@@ -6,7 +6,7 @@ using SteamStorageAPI.SDK.ApiEntities.Tools.Response;
 using SteamStorageAPI.SDK.Utilities.ApiControllers;
 using SteamStorageAPI.SDK.Utilities.Events;
 using SteamStorageAPI.SDK.Utilities.Exceptions;
-using File = SteamStorageAPI.SDK.ApiEntities.File;
+using File=SteamStorageAPI.SDK.ApiEntities.File;
 
 // ReSharper disable UnusedMember.Global
 // ReSharper disable EventNeverSubscribedTo.Global
@@ -119,8 +119,7 @@ public class ApiClient : IApiClient
         Func<HttpClient, Task> action,
         Uri uri)
     {
-        await ExecuteAsync<object?>(async client =>
-            {
+        await ExecuteAsync<object?>(async client => {
                 await action(client);
                 return null;
             },
@@ -136,8 +135,7 @@ public class ApiClient : IApiClient
         CancellationToken cancellationToken = default)
         where TOut : Response
     {
-        return await ExecuteAsync(async client =>
-            {
+        return await ExecuteAsync(async client => {
                 HttpResponseMessage response = await client.GetAsync(uri, cancellationToken);
                 return await response.Content.ReadFromJsonAsync<TOut>(cancellationToken);
             },
@@ -172,8 +170,7 @@ public class ApiClient : IApiClient
     {
         Uri uri = CreateUri(ApiConstants.GetController(apiMethod), apiMethod);
 
-        return await ExecuteAsync(async client =>
-            {
+        return await ExecuteAsync(async client => {
                 HttpResponseMessage response = await client.GetAsync(uri, cancellationToken);
                 response.EnsureSuccessStatusCode();
                 string fileName = response.Content.Headers.ContentDisposition?.FileName ?? string.Empty;
@@ -194,8 +191,7 @@ public class ApiClient : IApiClient
         where TIn : Request
     {
         await ExecuteAsync(
-            async client =>
-            {
+            async client => {
                 HttpResponseMessage response = await client.PostAsJsonAsync(uri, args, cancellationToken);
                 return response;
             },
@@ -235,8 +231,7 @@ public class ApiClient : IApiClient
         where TIn : Request
     {
         await ExecuteAsync(
-            async client =>
-            {
+            async client => {
                 HttpResponseMessage response = await client.PutAsJsonAsync(uri, args, cancellationToken);
                 return response;
             },
@@ -276,8 +271,7 @@ public class ApiClient : IApiClient
         where TIn : Request
     {
         await ExecuteAsync(
-            async client =>
-            {
+            async client => {
                 HttpRequestMessage request = new()
                 {
                     Content = JsonContent.Create(args),

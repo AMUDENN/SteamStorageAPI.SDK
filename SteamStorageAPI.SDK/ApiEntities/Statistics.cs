@@ -1,4 +1,5 @@
-﻿using SteamStorageAPI.SDK.ApiEntities.Tools.Response;
+﻿using SteamStorageAPI.SDK.ApiEntities.Tools.Request;
+using SteamStorageAPI.SDK.ApiEntities.Tools.Response;
 
 // ReSharper disable NotAccessedPositionalProperty.Global
 // ReSharper disable UnusedType.Global
@@ -39,6 +40,9 @@ public static class Statistics
 
     public record ItemsCountResponse(
         int Count) : Response;
+
+    public record GetItemsCountByGameRequest(
+        int GameId) : Request;
 
     #endregion Records
 }

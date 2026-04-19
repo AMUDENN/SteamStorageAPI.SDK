@@ -42,7 +42,9 @@ public static class Users
 
     public record GetUsersRequest(
         int PageNumber,
-        int PageSize) : Request;
+        int PageSize,
+        int? UserId,
+        string? Nickname) : Request;
 
     public record GetUserRequest(
         int UserId) : Request;

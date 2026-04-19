@@ -33,6 +33,7 @@ public static class ApiConstants
         File,
         Games,
         Inventory,
+        Jobs,
         Pages,
         Roles,
         Skins,
@@ -185,6 +186,10 @@ public static class ApiConstants
         ///<summary>GET request</summary>
         [ApiController(ApiControllers.Currencies)]
         GetCurrentCurrency,
+        
+        ///<summary>GET request</summary>
+        [ApiController(ApiControllers.Currencies)]
+        GetCurrencyDynamics,
 
         ///<summary>POST request</summary>
         [ApiController(ApiControllers.Currencies)]
@@ -203,23 +208,23 @@ public static class ApiConstants
         DeleteCurrency,
 
         ///<summary>GET request</summary>
-        [ApiController(ApiControllers.File)] 
+        [ApiController(ApiControllers.File)]
         GetExcelFile = 700,
 
         ///<summary>GET request</summary>
-        [ApiController(ApiControllers.Games)] 
+        [ApiController(ApiControllers.Games)]
         GetGames = 800,
 
         ///<summary>POST request</summary>
-        [ApiController(ApiControllers.Games)] 
+        [ApiController(ApiControllers.Games)]
         PostGame,
 
         ///<summary>PUT request</summary>
-        [ApiController(ApiControllers.Games)] 
+        [ApiController(ApiControllers.Games)]
         PutGameInfo,
 
         ///<summary>DELETE request</summary>
-        [ApiController(ApiControllers.Games)] 
+        [ApiController(ApiControllers.Games)]
         DeleteGame,
 
         ///<summary>GET request</summary>
@@ -241,6 +246,10 @@ public static class ApiConstants
         ///<summary>POST request</summary>
         [ApiController(ApiControllers.Inventory)]
         RefreshInventory,
+        
+        ///<summary>POST request</summary>
+        [ApiController(ApiControllers.Jobs)]
+        TriggerJob,
 
         ///<summary>GET request</summary>
         [ApiController(ApiControllers.Pages)] GetPages = 1000,
@@ -310,6 +319,10 @@ public static class ApiConstants
         ///<summary>GET request</summary>
         [ApiController(ApiControllers.Statistics)]
         GetItemsCount,
+        
+        ///<summary>GET request</summary>
+        [ApiController(ApiControllers.Statistics)]
+        GetItemsCountByGame,
 
         ///<summary>GET request</summary>
         [ApiController(ApiControllers.Users)] GetUsers = 1400,

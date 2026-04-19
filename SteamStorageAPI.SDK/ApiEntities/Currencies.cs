@@ -23,8 +23,19 @@ public static class Currencies
         int Count,
         IEnumerable<CurrencyResponse>? Currencies) : Response;
 
+    public record CurrencyDynamicResponse(
+        int Id,
+        DateTime DateUpdate,
+        double ExchangeRate) : Response;
+
+    public record CurrencyDynamicsResponse(
+        IEnumerable<CurrencyDynamicResponse> Dynamic) : Response;
+
     public record GetCurrencyRequest(
         int Id) : Request;
+
+    public record GetCurrencyDynamicsRequest(
+        int CurrencyId) : Request;
 
     public record PostCurrencyRequest(
         int SteamCurrencyId,

@@ -21,8 +21,7 @@ public static class ServiceCollectionExtensions
 
             //Main HttpClient
             services.AddHttpClient(clientOptions.ClientName,
-                    client =>
-                    {
+                    client => {
                         client.Timeout = TimeSpan.FromSeconds(clientOptions.ClientTimeout);
                         client.DefaultRequestHeaders.Clear();
                         client.DefaultRequestHeaders.Add("Accept", "application/json");
@@ -57,8 +56,7 @@ public static class ServiceCollectionExtensions
 
             //Main HttpClient
             services.AddHttpClient(clientOptions.ClientName,
-                    client =>
-                    {
+                    client => {
                         client.Timeout = TimeSpan.FromSeconds(clientOptions.ClientTimeout);
                         client.DefaultRequestHeaders.Clear();
                         client.DefaultRequestHeaders.Add("Accept", "application/json");
