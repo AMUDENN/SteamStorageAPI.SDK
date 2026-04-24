@@ -17,5 +17,8 @@ public static class Authorize
         string Url,
         string Group) : Response;
 
+    public record ExchangeTokenResponse(
+        string Token) : Response;
+
     #endregion Records
 }

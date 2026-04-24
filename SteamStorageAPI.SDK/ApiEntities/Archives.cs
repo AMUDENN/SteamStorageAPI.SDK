@@ -34,7 +34,7 @@ public static class Archives
         decimal BuyPrice,
         decimal SoldPrice,
         decimal SoldSum,
-        double Change,
+        decimal Change,
         string? Description) : Response;
 
     public record ArchivesResponse(

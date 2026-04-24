@@ -29,11 +29,11 @@ public static class ActiveGroups
         string? Description,
         string Colour,
         decimal? GoalSum,
-        double? GoalSumCompletion,
+        decimal? GoalSumCompletion,
         int Count,
         decimal BuySum,
         decimal CurrentSum,
-        double Change,
+        decimal Change,
         DateTime DateCreation) : Response;
 
     public record ActiveGroupsResponse(
@@ -42,17 +42,17 @@ public static class ActiveGroups
 
     public record ActiveGroupsGameCountResponse(
         string GameTitle,
-        double Percentage,
+        decimal Percentage,
         int Count) : Response;
 
     public record ActiveGroupsGameInvestmentSumResponse(
         string GameTitle,
-        double Percentage,
+        decimal Percentage,
         decimal InvestmentSum) : Response;
 
     public record ActiveGroupsGameCurrentSumResponse(
         string GameTitle,
-        double Percentage,
+        decimal Percentage,
         decimal CurrentSum) : Response;
 
     public record ActiveGroupsStatisticResponse(
@@ -69,7 +69,7 @@ public static class ActiveGroups
         decimal Sum) : Response;
 
     public record ActiveGroupDynamicStatsResponse(
-        double ChangePeriod,
+        decimal ChangePeriod,
         IEnumerable<ActiveGroupDynamicResponse>? Dynamic) : Response;
 
     public record ActiveGroupsCountResponse(

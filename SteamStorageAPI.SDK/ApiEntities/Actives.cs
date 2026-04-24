@@ -34,8 +34,8 @@ public static class Actives
         decimal CurrentPrice,
         decimal CurrentSum,
         decimal? GoalPrice,
-        double? GoalPriceCompletion,
-        double Change,
+        decimal? GoalPriceCompletion,
+        decimal Change,
         string? Description) : Response;
 
     public record ActivesResponse(

@@ -31,7 +31,7 @@ public static class ArchiveGroups
         int Count,
         decimal BuySum,
         decimal SoldSum,
-        double Change,
+        decimal Change,
         DateTime DateCreation) : Response;
 
     public record ArchiveGroupsResponse(
@@ -40,17 +40,17 @@ public static class ArchiveGroups
 
     public record ArchiveGroupsGameCountResponse(
         string GameTitle,
-        double Percentage,
+        decimal Percentage,
         int Count) : Response;
 
     public record ArchiveGroupsGameBuySumResponse(
         string GameTitle,
-        double Percentage,
+        decimal Percentage,
         decimal BuySum) : Response;
 
     public record ArchiveGroupsGameSoldSumResponse(
         string GameTitle,
-        double Percentage,
+        decimal Percentage,
         decimal SoldSum) : Response;
 
     public record ArchiveGroupsStatisticResponse(

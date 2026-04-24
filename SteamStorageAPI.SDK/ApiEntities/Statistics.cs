@@ -11,31 +11,31 @@ public static class Statistics
     #region Records
 
     public record InvestmentSumResponse(
-        double TotalSum,
-        double PercentageGrowth) : Response;
+        decimal TotalSum,
+        decimal PercentageGrowth) : Response;
 
     public record FinancialGoalResponse(
-        double FinancialGoal,
-        double PercentageCompletion) : Response;
+        decimal FinancialGoal,
+        decimal PercentageCompletion) : Response;
 
     public record ActiveStatisticResponse(
         int Count,
-        double CurrentSum,
-        double PercentageGrowth) : Response;
+        decimal CurrentSum,
+        decimal PercentageGrowth) : Response;
 
     public record ArchiveStatisticResponse(
         int Count,
-        double SoldSum,
-        double PercentageGrowth) : Response;
+        decimal SoldSum,
+        decimal PercentageGrowth) : Response;
 
     public record InventoryStatisticResponse(
         int Count,
-        double Sum,
+        decimal Sum,
         IEnumerable<InventoryGameStatisticResponse>? Games) : Response;
 
     public record InventoryGameStatisticResponse(
         string GameTitle,
-        double Percentage,
+        decimal Percentage,
         int Count) : Response;
 
     public record ItemsCountResponse(

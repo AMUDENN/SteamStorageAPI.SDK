@@ -176,6 +176,10 @@ public static class ApiConstants
         GetAuthUrl = 500,
 
         ///<summary>GET request</summary>
+        [ApiController(ApiControllers.Authorize)]
+        ExchangeToken,
+
+        ///<summary>GET request</summary>
         [ApiController(ApiControllers.Currencies)]
         GetCurrencies = 600,
 

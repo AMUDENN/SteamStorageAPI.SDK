@@ -16,7 +16,7 @@ public static class Currencies
         string Title,
         string Mark,
         string CultureInfo,
-        double Price,
+        decimal Price,
         DateTime DateUpdate) : Response;
 
     public record CurrenciesResponse(
@@ -26,7 +26,7 @@ public static class Currencies
     public record CurrencyDynamicResponse(
         int Id,
         DateTime DateUpdate,
-        double ExchangeRate) : Response;
+        decimal ExchangeRate) : Response;
 
     public record CurrencyDynamicsResponse(
         IEnumerable<CurrencyDynamicResponse> Dynamic) : Response;
