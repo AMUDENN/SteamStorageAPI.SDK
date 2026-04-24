@@ -13,6 +13,9 @@ public static class Authorize
     public record GetAuthUrlRequest(
         string? ReturnTo) : Request;
 
+    public record ExchangeTokenRequest(
+        string AuthCode) : Request;
+
     public record AuthUrlResponse(
         string Url,
         string Group) : Response;
