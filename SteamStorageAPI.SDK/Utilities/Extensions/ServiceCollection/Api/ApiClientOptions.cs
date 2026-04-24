@@ -6,7 +6,7 @@ public class ApiClientOptions
 {
     #region Properties
 
-    public int ClientTimeout { get; set; } = 15;
+    public TimeSpan ClientTimeout { get; set; } = TimeSpan.FromSeconds(15);
 
     public string ClientName { get; set; } = string.Empty;
 

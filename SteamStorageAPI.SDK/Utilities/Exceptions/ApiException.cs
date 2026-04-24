@@ -25,20 +25,14 @@ public class ApiException : Exception
 
     #region Constructor
 
-    public ApiException()
-    {
-    }
+    public ApiException() {}
 
     public ApiException(
-        string? message) : base(message)
-    {
-    }
+        string? message) : base(message) {}
 
     public ApiException(
         string? message,
-        Exception innerException) : base(message, innerException)
-    {
-    }
+        Exception innerException) : base(message, innerException) {}
 
     #endregion Constructor
 }

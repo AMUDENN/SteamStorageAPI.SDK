@@ -56,6 +56,7 @@ public class ApiClient : IApiClient
         get => _token;
         set
         {
+            if (_token == value) return;
             _token = value;
             OnTokenChanged(value);
         }
